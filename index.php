@@ -177,7 +177,6 @@ if (isset($_POST["btnRegister"])) {
 }
 }
 
-
 ?>
 
 <style>
