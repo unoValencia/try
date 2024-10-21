@@ -3,14 +3,20 @@
 <br>
 <br>
 <center>
-    <table border="1" width="80%">
+    <table border="0" width="80%">
         <tr>
             <td width="16%">Name</td>
-            <td width="16%">Gender</td>
+            <td width="10%">Gender</td>
             <td width="16%">Contact</td>
             <td width="16%">Email</td>
             <td width="16%">Password</td>
             <td width="16%">Action</td>
+        </tr>
+
+        <tr>
+
+            <td colspan='6'> <hr> </td>
+
         </tr>
 
 
@@ -41,6 +47,7 @@ while($row_users = mysqli_fetch_assoc($retriever_query)){
     $jScript = md5(rand(1,9));
     $newScript = md5(rand(1,9));
     $getUpdate = md5(rand(1,9));
+    $getDelete = md5(rand(1,9));
 
     echo "
     <tr>
@@ -54,11 +61,23 @@ while($row_users = mysqli_fetch_assoc($retriever_query)){
                 <br>
                 <br>
                 <a href='?jScript=$jScript && newScript=$newScript && getUpdate=$getUpdate && id_user=$id_user' class='btn-update'>Update</a>
+
+                &nbsp;
+
+                <a href='?jScript=$jScript && newScript=$newScript && getDelete=$getDelete && id_user=$id_user' class='btn-delete'>Delete</a>
                 <br>
                 <br>
             </center>
         </td>
     </tr>";
+
+    echo "
+        <tr>
+            
+            <td colspan='6'><hr></td>
+        
+        </tr>
+    ";
 }
 
 ?>

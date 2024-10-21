@@ -14,6 +14,17 @@ include("../nav.php");
 
 <?php
 
+if(empty($_GET["getDelete"])){
+    
+}else{
+
+    include("confirm_delete.php");
+
+}
+
+?>
+<?php
+
 if(empty($_GET["getUpdate"])){
 
 
