@@ -2,7 +2,7 @@
 
 session_start();
 include("../connections.php");
-include("../nav.php");
+include("nav.php");
 
 ?>
 <script type="text/javascript" src="js/jQuery.js"></script>

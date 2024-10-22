@@ -101,6 +101,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?> -->
 
 <?php
+
+include("nav.php");
+
+?>
+
+<br>
+<br>
+
+<?php
 if(isset($_POST["btn_1"])){
     echo "Napindot ko na si 1st Button";
 }
