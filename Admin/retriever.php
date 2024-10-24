@@ -26,13 +26,13 @@
 
 include("../connections.php");
 
-$retriever_query = mysqli_query($connections, "SELECT * FROM tbl_user");
+$retriever_query = mysqli_query($connections, "SELECT * FROM tbl_user WHERE account_type='2'");
 
 while($row_users = mysqli_fetch_assoc($retriever_query)){
 
     $id_user = $row_users["id_user"];
 
-    $db_frist_name = $row_users["first_name"];
+    $db_first_name = $row_users["first_name"];
     $db_middle_name = $row_users["middle_name"];
     $db_last_name = $row_users["last_name"];
     $db_gender = ucfirst($row_users["gender"]);
@@ -41,7 +41,7 @@ while($row_users = mysqli_fetch_assoc($retriever_query)){
     $db_email = $row_users["email"];
     $db_password = $row_users["password"];
 
-    $full_name = ucfirst($db_frist_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name);
+    $full_name= ucfirst($db_first_name) ." ". ucfirst($db_middle_name[0]).". ".ucfirst($db_last_name);
     $contact = $db_preffix.$db_seven_digit;
 
     $jScript = md5(rand(1,9));

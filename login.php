@@ -1,7 +1,25 @@
 <?php
 
+session_start();
+
 include ("connections.php");
 include ("nav.php");
+
+if(isset($_SESSION["email"])){
+
+    $email = $_SESSION["email"];
+    $query_account_type = mysqli_query($connections, "SELECT * FROM tbl_user WHERE email='$email'");
+    $get_account_type = mysqli_fetch_assoc($query_account_type);
+    $account_type = $get_account_type["account_type"];
+    if ($account_type == 1){
+        echo  "<script>window.location.href='Admin';</script>";
+
+    }else {
+        echo "<script>window.location.href='User';</script>";
+
+    }
+
+}
 
 date_default_timezone_set("Asia/Manila");
 $date_now = date("m/d/Y");
@@ -51,6 +69,9 @@ if (isset($_POST["btnLogin"])) {
             // Check if the user is an admin
             if ($account_type == "1") {
                 if ($db_password == $password) {
+
+                    $_SESSION["email"] = $email;
+
                     echo "<script>window.location.href='Admin';</script>";
                 } else {
                     $passwordErr = "Hi Admin! Your Password is incorrect!";
@@ -59,6 +80,9 @@ if (isset($_POST["btnLogin"])) {
                 // If not admin, check login attempts and timing
                 if ($db_log_time <= $new_time) {
                     if ($db_password == $password) {
+
+                        $_SESSION["email"] = $email;
+
                         echo "<script>window.location.href='User';</script>";
                     } else {
                         $attempt = (int)$db_attempt + 1; // Cast $db_attempt to integer before incrementing
