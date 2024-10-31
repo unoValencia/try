@@ -230,8 +230,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $mail->FromName = 'uno';
                         $mail->addAddress($email);
                         $mail->isHTML(true);
-                        $mail->Subject = 'Lesson 13';
-                        $mail->Body = "Sir pahingi po ng last lesson, lesson 14 po.";
+                        $mail->Subject = 'Default Password';
+                        $mail->Body = "This is your password.<b><font color=red>$password</font></b>";
 
                         if (!$mail->send()) {
                             echo 'Message could not be sent.';
