@@ -125,6 +125,11 @@ if(isset($_POST["btn_2"])){
 
 </form>
 <?php
+require 'PHPMailer/vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 include("connections.php");
 
 $first_name = $middle_name = $last_name = $gender = $preffix = $seven_digit = $email = "";
@@ -210,11 +215,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $shuffled = substr (str_shuffle($str), 0, $length);
                             return $shuffled;
                         }
-                        $password = random_password(8);
+                        $password = random_password(8); 
 
-                            mysqli_query($connections, "INSERT INTO tbl_user(first_name,middle_name,last_name,gender,preffix,seven_digit,email,password,account_type) VALUES('$first_name' , '$middle_name' , '$last_name' , '$gender' , '$preffix' , '$seven_digit' , '$email' , '$password' ,'2') ");
+                        $mail = new PHPMailer;
+                       
+                        $mail->IsSMTP();
+                        $mail->Host =  'smtp.gmail.com';
+                        $mail->SMTPAuth = true;
+                        $mail->Username = 'janinevalencian27@gmail.com';
+                        $mail->Password = 'ddjj bllh jbvu wphz';
+                        $mail->SMTPSecure = 'tls';
+                        $mail->Port = 587;
+                        $mail->From = 'janinevalencian27@gmail.com';
+                        $mail->FromName = 'uno';
+                        $mail->addAddress($email);
+                        $mail->isHTML(true);
+                        $mail->Subject = 'Lesson 13';
+                        $mail->Body = "Sir pahingi po ng last lesson, lesson 14 po.";
 
+                        if (!$mail->send()) {
+                            echo 'Message could not be sent.';
+                            echo 'Mailer Error: ' . $mail->ErrorInfo;
+                        } else {
+                            mysqli_query($connections, "INSERT INTO tbl_user(first_name, middle_name, last_name, gender, preffix, seven_digit, email, password, account_type) VALUES('$first_name', '$middle_name', '$last_name', '$gender', '$preffix', '$seven_digit', '$email', '$password', '2')");
                             echo "<script>window.location.href='success.php';</script>";
+                        }
+
+
+
+                            
 
 
                         include("connections.php");
