@@ -4,7 +4,7 @@
         <li><a href="search.php" class="nav-link">Search</a> &nbsp;</li>
         <li><a href="login.php" class="nav-link">Login</a></li>
         <li><a href="ViewRecord.php" class="nav-link">Records</a></li>
-        <li><a href="SendSMS" class="nav-link">Message</a></li>
+        <li><a href="SendSMS.php" class="nav-link">Message</a></li>
         <li><a href="../logout.php" class="nav-link">Logout</a> &nbsp;</li>
     </ul>
 </div>
